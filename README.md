@@ -1,4 +1,4 @@
-# Side project by marcus tsai
+# Side project by Marcus Tsai
 
 ## Features
 * Server Traffic dashboard

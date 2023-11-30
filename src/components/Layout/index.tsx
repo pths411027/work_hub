@@ -1,8 +1,10 @@
-import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Box, Slide } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { blue } from '@mui/material/colors';
 import Header from './Header';
 import MenuItem from './MenuItem';
+import useLayoutStore from '../../stores/LayoutStore';
 
 const menu = [
   {
@@ -19,29 +21,42 @@ const menu = [
   },
 
 ];
+
 // Component definition
 function Layout() {
-  const [checked, setChecked] = useState(false);
+  const theme = useTheme();
+  const isSidebarOpen = useLayoutStore((state) => state.isSidebarOpen);
 
+  const mainStyle = {
+    padding: '1rem 2rem',
+    marginLeft: isSidebarOpen ? '0px' : '-200px',
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: isSidebarOpen ? theme.transitions.duration.enteringScreen : theme.transitions.duration.leavingScreen,
+    }),
+  };
   return (
     <>
       <Header />
-      <Slide direction="right" in={checked} mountOnEnter unmountOnExit>
-        <Box sx={{
-          width: '200px',
-          height: '100vh',
-          overflowY: 'auto',
-          borderRight: '1px solid #ccc',
-        }}
-        >
-          {menu.map((item) => (
-            <MenuItem key={item.title} title={item.title} />
-          ))}
-        </Box>
-      </Slide>
-      <main>
-        <Outlet />
-      </main>
+      <Box display="flex">
+        <Slide direction="right" in={isSidebarOpen}>
+          <Box sx={{
+            width: '200px',
+            height: '100vh',
+            overflowY: 'auto',
+            borderRight: '1px solid #ccc',
+          }}
+          >
+            {menu.map((item) => (
+              <MenuItem key={item.title} title={item.title} />
+            ))}
+          </Box>
+        </Slide>
+        <main style={{ ...mainStyle }}>
+          <Outlet />
+        </main>
+      </Box>
+
     </>
 
   );

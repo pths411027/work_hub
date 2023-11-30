@@ -5,10 +5,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { yellow } from '@mui/material/colors';
 import { AccountCircle } from '@mui/icons-material';
 import { useState } from 'react';
+import useLayoutStore from '../../stores/LayoutStore';
 
 function Header() {
   const [checked, setChecked] = useState(false);
-
+  const toggleSidebar = useLayoutStore((state) => state.toggleSidebar);
   return (
     <AppBar
       position="sticky"
@@ -24,7 +25,7 @@ function Header() {
           color="inherit"
           aria-label="menu"
           sx={{ mr: 2 }}
-          onClick={() => setChecked(!checked)}
+          onClick={() => toggleSidebar()}
         >
           <MenuIcon />
         </IconButton>

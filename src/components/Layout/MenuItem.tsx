@@ -25,6 +25,7 @@ function MenuItem(item: MenuItemProps) {
       }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+
     >
       <AccountCircle
         sx={{

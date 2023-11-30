@@ -10,32 +10,10 @@ import { useState } from 'react';
 
 import MenuItem from './menuItem';
 
-const menu = [
-  {
-    title: 'Home',
-    url: '/',
-  },
-  {
-    title: 'About',
-    url: '/about',
-  },
-  {
-    title: 'Contact',
-    url: '/contact',
-  },
-
-];
 // Component definition
 function HomePage() {
-  const [checked, setChecked] = useState(false);
-  const navigiate = useNavigate();
-  const [login, setLogin] = useState(false);
-  const handleLogin = () => {
-    navigiate('/login');
-  };
-
   return (
-    <Box sx={{ backgroundColor: yellow[100], height: '1000px', width: '100px' }}>
+    <Box sx={{ backgroundColor: yellow[100], height: '1000px', width: '1000px' }}>
       123
     </Box>
 

@@ -1,11 +1,9 @@
-// External imports
 import { Routes, Route } from 'react-router-dom';
 
-// Local imports
 import HomePage from '../pages/Home';
 import LoginIn from '../pages/Login';
 import Layout from '../components/Layout';
-// Component definition
+
 function App() {
   return (
     <Routes>
@@ -18,5 +16,4 @@ function App() {
   );
 }
 
-// Default export
 export default App;

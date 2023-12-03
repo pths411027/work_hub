@@ -1,22 +1,23 @@
-import {
-  AppBar, Toolbar, IconButton, Typography, Box, Button, Icon,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { yellow, orange } from '@mui/material/colors';
-import { AccountCircle, Tune } from '@mui/icons-material';
-import Slide from '@mui/material/Slide';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Box, Button, Paper } from '@mui/material';
+import { use } from 'i18next';
+import { useEffect } from 'react';
+import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 
-import MenuItem from './menuItem';
+import useLayoutStore from '../../stores/LayoutStore';
 
-// Component definition
 function HomePage() {
   return (
-    <Box sx={{ backgroundColor: yellow[100], height: '1000px', width: '1000px' }}>
-      123
-    </Box>
-
+    <Paper
+      sx={{
+        height: 810,
+        width: '100%',
+      }}
+      elevation={5}
+    >
+      <Box>
+        123
+      </Box>
+    </Paper>
   );
 }
 

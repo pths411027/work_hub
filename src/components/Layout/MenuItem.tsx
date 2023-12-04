@@ -5,7 +5,7 @@ import {
 
 import { grey } from '@mui/material/colors';
 import {
-  ExpandMore, FiberManualRecord,
+  ExpandMore, FiberManualRecord, PausePresentationOutlined,
   ChevronRightOutlined,
 } from '@mui/icons-material';
 import { useState, ElementType, FC } from 'react';
@@ -21,7 +21,7 @@ export interface MenuItemProps {
   icon: ElementType;
   subtitle: MenuItemSubProps[];
 }
-const MenuItem: FC<MenuItemProps> = ({
+const MenuItems: FC<MenuItemProps> = ({
   title, url, icon: Icon, subtitle,
 }) => {
   const [open, setOpen] = useState(false);
@@ -36,7 +36,7 @@ const MenuItem: FC<MenuItemProps> = ({
               alignItems: 'center',
               justifyContent: 'center',
               '&:hover': {
-                backgroundColor: grey[300],
+                bgcolor: grey[300],
                 borderRadius: '1px',
               },
             }}
@@ -58,7 +58,7 @@ const MenuItem: FC<MenuItemProps> = ({
             subtitle.map((subItem) => (
               <ListItemButton key={subItem.title} sx={{ pl: 10 }}>
                 <ListItemIcon>
-                  <FiberManualRecord sx={{ fontSize: '16px' }} />
+                  <PausePresentationOutlined />
                 </ListItemIcon>
                 <ListItemText primary={subItem.title} />
               </ListItemButton>
@@ -70,4 +70,4 @@ const MenuItem: FC<MenuItemProps> = ({
   );
 };
 
-export default MenuItem;
+export default MenuItems;

@@ -13,6 +13,7 @@ import './styles/main.scss';
 initI18n();
 
 const htmlRoot = document.getElementById('root') as HTMLElement;
+
 const reactRoot = ReactDOM.createRoot(htmlRoot);
 
 reactRoot.render(

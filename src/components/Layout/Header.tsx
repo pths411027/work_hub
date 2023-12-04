@@ -25,7 +25,7 @@ function Header() {
     <AppBar
       position="sticky"
       sx={{
-        backgroundColor: 'white',
+        backgroundColor: orange[300],
         zIndex: (theme) => theme.zIndex.drawer + 1,
         transition: theme.transitions.create('margin', {
           easing: theme.transitions.easing.easeOut,

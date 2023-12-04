@@ -24,14 +24,13 @@ export interface MenuItemProps {
 const MenuItem: FC<MenuItemProps> = ({
   title, url, icon: Icon, subtitle,
 }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <List>
       <ListItemButton>
         <ListItemIcon>
           <Box
             sx={{
-              ml: 2,
               height: '100%',
               display: 'flex',
               alignItems: 'center',
@@ -48,13 +47,13 @@ const MenuItem: FC<MenuItemProps> = ({
               : <ChevronRightOutlined />}
           </Box>
         </ListItemIcon>
-        <ListItemIcon sx={{ mr: -2 }}>
+        <ListItemIcon sx={{ ml: -2, mr: -2 }}>
           <Icon />
         </ListItemIcon>
         <ListItemText primary={title} />
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
+        <List sx={{ py: 0 }}>
           {
             subtitle.map((subItem) => (
               <ListItemButton key={subItem.title} sx={{ pl: 10 }}>

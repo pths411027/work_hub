@@ -2,7 +2,7 @@
 /node_modules
 /.pnp
 .pnp.js
-.json
+*.json
 
 # production
 /out
@@ -24,4 +24,4 @@ yarn-error.log*
 # picture
 .jpg
 .jpeg
-.png
+*.png

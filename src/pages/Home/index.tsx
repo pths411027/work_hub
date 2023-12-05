@@ -1,15 +1,8 @@
 import {
-  Box, Button, Paper, Typography, Chip, Switch, Avatar, IconButton, Grid, useMediaQuery,
+  Box, Paper, Grid, useMediaQuery,
 } from '@mui/material';
-import { use } from 'i18next';
-import { useEffect, useState } from 'react';
-import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { orange, blue, grey } from '@mui/material/colors';
-import { MoreHoriz } from '@mui/icons-material';
-import useLayoutStore from '../../stores/LayoutStore';
-import IOSSwitch from '../../tool/CustomerSwitch';
-import atomImage from '../../pictures/atom.png';
+
+import { useNavigate } from 'react-router-dom';
 import googleDrive from '../../pictures/google-drive.png';
 import man from '../../pictures/man.png';
 import manHat from '../../pictures/manhat.png';
@@ -114,7 +107,7 @@ const getBoxGap = ({
   if (sm) return '1.333%';
   if (s) return '2%';
   if (xs) return '2%';
-  return '0%';
+  return '2%';
 };
 
 function HomePage() {
@@ -122,7 +115,6 @@ function HomePage() {
   const xs = useMediaQuery(`(min-width:${500 + menuWidth}px)`);
   const s = useMediaQuery(`(min-width:${900 + menuWidth}px)`);
   const sm = useMediaQuery(`(min-width:${1100 + menuWidth}px)`);
-  const [data, setData] = useState(fakeData);
 
   return (
     <Paper
@@ -134,7 +126,7 @@ function HomePage() {
         justifyContent: 'center',
         overflowY: 'auto',
       }}
-      elevation={5}
+      elevation={0}
     >
 
       <Grid
@@ -151,6 +143,10 @@ function HomePage() {
               }),
               borderRadius: '10px',
               border: '1px solid #E0E0E0',
+              '&:hover': {
+                cursor: 'pointer',
+                boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)',
+              },
             }}
           >
             <PaperBox
@@ -162,6 +158,7 @@ function HomePage() {
               owner={item.owner}
               icon={item.icon}
               ownerPic={item.ownerPic}
+
             />
           </Box>
         ))}

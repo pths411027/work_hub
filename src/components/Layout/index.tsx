@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
-  Box, Slide, Divider, Typography, Button, Menu, MenuItem, IconButton,
+  Box, Slide, Divider, Typography, Button, Menu, MenuItem, IconButton, Avatar,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
@@ -14,6 +14,7 @@ import Header from './Header';
 import MenuItems from './MenuItem';
 import useLayoutStore from '../../stores/LayoutStore';
 import { workManagementMenu, dataAnalysis } from '../../config/MenuConfig';
+import man from '../../pictures/man.png';
 
 const WIDTH = 300;
 function Layout() {
@@ -57,14 +58,25 @@ function Layout() {
               alignItems="center"
               sx={{ height: '60px', pl: 2 }}
             >
-              <Button id="basic-button" onClick={handleClick} sx={{ color: 'black' }}>
-                <AccountCircle sx={{ color: 'black', mr: 2 }} />
+              <Button id="person-button" onClick={handleClick} sx={{ color: 'black' }}>
+                <Avatar
+                  alt="Marcus Tsai"
+                  src={man}
+                  sx={{
+                    width: '30px',
+                    height: '30px',
+                    padding: '1px',
+                    bgcolor: 'white',
+                    mr: 1,
+                    border: '1px solid #ccc',
+                  }}
+                />
                 <Typography sx={{ fontSize: '16px' }}>
                   Marcus Tsai
                 </Typography>
               </Button>
               <Menu
-                id="basic-menu"
+                id="person-menu"
                 anchorEl={anchorEl}
                 open={isMenu}
                 onClose={() => setIsMenu(false)}
@@ -78,9 +90,6 @@ function Layout() {
               </Menu>
               <IconButton
                 size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
                 sx={{
                   color: 'black',
                   display: {

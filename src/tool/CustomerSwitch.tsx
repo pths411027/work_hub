@@ -5,28 +5,28 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch, { SwitchProps } from '@mui/material/Switch';
 
 interface CustomSwitchProps extends SwitchProps {
-  switchColor?: string;
-  switchHeight?: number;
-  switchLength?: number;
+  switchcolor?: string;
+  switchheight?: number;
+  switchlength?: number;
 
 }
 const IOSSwitch = styled((props: CustomSwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({
-  theme, switchColor, switchHeight, switchLength,
+  theme, switchcolor, switchheight, switchlength,
 }) => ({
-  width: switchLength || 42,
-  height: switchHeight || 26,
+  width: switchlength || 42,
+  height: switchheight || 26,
   padding: 0,
   '& .MuiSwitch-switchBase': {
     padding: 0,
     margin: 2,
     transitionDuration: '300ms',
     '&.Mui-checked': {
-      transform: `translateX(${switchLength && switchHeight ? switchLength - switchHeight : 14}px)`,
+      transform: `translateX(${switchlength && switchheight ? switchlength - switchheight : 14}px)`,
       color: '#fff',
       '& + .MuiSwitch-track': {
-        backgroundColor: theme.palette.mode === 'dark' ? switchColor || '#2ECA45' : switchColor || '#65C466',
+        backgroundColor: theme.palette.mode === 'dark' ? switchcolor || '#2ECA45' : switchcolor || '#65C466',
         opacity: 1,
         border: 0,
       },
@@ -50,11 +50,11 @@ const IOSSwitch = styled((props: CustomSwitchProps) => (
   },
   '& .MuiSwitch-thumb': {
     boxSizing: 'border-box',
-    width: (switchHeight || 26) - 4,
-    height: (switchHeight || 26) - 4,
+    width: (switchheight || 26) - 4,
+    height: (switchheight || 26) - 4,
   },
   '& .MuiSwitch-track': {
-    borderRadius: (switchHeight || 26) / 2,
+    borderRadius: (switchheight || 26) / 2,
     backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
     opacity: 1,
     transition: theme.transitions.create(['background-color'], {

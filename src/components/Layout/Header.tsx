@@ -15,7 +15,8 @@ function Header() {
       position="sticky"
       elevation={0}
       sx={{
-        height: '60px',
+        justifyContent: 'center',
+        height: '50px',
         borderBottom: 'none',
         marginLeft: isSidebarOpen ? '300px' : '0px',
         width: isSidebarOpen ? 'calc(100% - 300px)' : '100%',
@@ -30,7 +31,7 @@ function Header() {
     >
       <Toolbar sx={{ border: 'none' }}>
         <IconButton
-          size="large"
+          size="small"
           edge="start"
           color="inherit"
           aria-label="menu"
@@ -43,7 +44,7 @@ function Header() {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h4" sx={{ flexGrow: 1, fontWeight: 'bold' }} color="black">
+        <Typography variant="h5" sx={{ flexGrow: 1, fontWeight: 'bold' }} color="black">
           Demo
         </Typography>
       </Toolbar>

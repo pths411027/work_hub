@@ -10,6 +10,8 @@ import {
 } from '@mui/icons-material';
 import { useState, ElementType, FC } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 export interface MenuItemSubProps {
   title: string;
   url: string;
@@ -24,6 +26,7 @@ export interface MenuItemProps {
 const MenuItems: FC<MenuItemProps> = ({
   title, url, icon: Icon, subtitle,
 }) => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   return (
     <List>
@@ -56,7 +59,11 @@ const MenuItems: FC<MenuItemProps> = ({
         <List sx={{ py: 0 }}>
           {
             subtitle.map((subItem) => (
-              <ListItemButton key={subItem.title} sx={{ pl: 10 }}>
+              <ListItemButton
+                key={subItem.title}
+                sx={{ pl: 10 }}
+                onClick={() => navigate(`./${title}/${subItem.title}`)}
+              >
                 <ListItemIcon>
                   <PausePresentationOutlined />
                 </ListItemIcon>

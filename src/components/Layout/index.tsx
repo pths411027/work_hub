@@ -8,12 +8,13 @@ import {
   AccountCircle, KeyboardDoubleArrowLeftOutlined,
 } from '@mui/icons-material';
 import {
-  useState, MouseEvent,
+  useState, MouseEvent, Fragment,
 } from 'react';
 import Header from './Header';
 import MenuItems from './MenuItem';
 import useLayoutStore from '../../stores/LayoutStore';
 import { workManagementMenu, dataAnalysis } from '../../config/MenuConfig';
+import { paperData } from '../../config/ReportData';
 import man from '../../pictures/man.png';
 
 const WIDTH = 300;
@@ -31,7 +32,8 @@ function Layout() {
 
   const mainStyle = {
     flexGrow: 1,
-    padding: '1rem 2rem',
+    // padding: '1rem 2rem',
+
     marginLeft: isSidebarOpen ? `${WIDTH}px` : '0px',
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
@@ -56,7 +58,7 @@ function Layout() {
             <Box
               display="flex"
               alignItems="center"
-              sx={{ height: '60px', pl: 2 }}
+              sx={{ height: '50px', pl: 2 }}
             >
               <Button id="person-button" onClick={handleClick} sx={{ color: 'black' }}>
                 <Avatar
@@ -84,7 +86,7 @@ function Layout() {
                   'aria-labelledby': 'basic-button',
                 }}
               >
-                <MenuItem>Profile</MenuItem>
+                <MenuItem onClick={() => navigate('/profile')}>Profile</MenuItem>
                 <MenuItem>My account</MenuItem>
                 <MenuItem onClick={() => navigate('/login')}>Logout</MenuItem>
               </Menu>
@@ -114,9 +116,8 @@ function Layout() {
             >
               {
               [workManagementMenu, dataAnalysis].map((item) => (
-                <>
+                <Fragment key={item.nestHeader}>
                   <Typography
-                    key={item.nestHeader}
                     variant="h6"
                     sx={{
                       fontWeight: 'bold', fontSize: '14px', color: grey[600],
@@ -133,7 +134,7 @@ function Layout() {
                       subtitle={menuItem.subtitle}
                     />
                   ))}
-                </>
+                </Fragment>
               ))
             }
             </Box>

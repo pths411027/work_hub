@@ -20,5 +20,10 @@
   },
   "files.associations": {
     ".env.https.local": "dotenv"
-  }
+  },
+  "cSpell.words": [
+    "switchcolor",
+    "switchheight",
+    "switchlength"
+  ]
 }

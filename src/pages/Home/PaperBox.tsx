@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
-  Box, Typography, Avatar, Menu, MenuItem, IconButton, Popover, Grid, Chip,
+  Box, Typography, Avatar, Menu, MenuItem, IconButton, Popover, Grid, Link, Button,
 } from '@mui/material';
 import {
   grey, orange, green, blue,
@@ -11,7 +11,7 @@ import {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import IOSSwitch from '../../tool/CustomerSwitch';
-import { IData } from './index';
+import { IData } from '../../config/ReportData';
 
 const fakeJob = [
   {
@@ -84,9 +84,9 @@ function PaperBox({
           {name}
         </Typography>
         <IOSSwitch
-          switchColor="#FDA93D"
-          switchLength={40}
-          switchHeight={20}
+          switchcolor="#FDA93D"
+          switchlength={40}
+          switchheight={20}
           sx={{ marginLeft: 'auto' }}
         />
       </Box>
@@ -98,7 +98,14 @@ function PaperBox({
           ria-owns={open ? 'mouse-over-popover' : undefined}
           aria-haspopup="true"
           sx={{
-            width: '20px', height: '20px', border: '1px solid #ccc',
+            width: '20px',
+            height: '20px',
+            border: '1px solid #ccc',
+            '&:hover': {
+              cursor: 'pointer',
+              width: '22px',
+              height: '22px',
+            },
           }}
           src={ownerPic}
           onMouseEnter={handlePopoverOpen}
@@ -123,9 +130,10 @@ function PaperBox({
           onClose={handlePopoverClose}
           disableRestoreFocus
         >
-          <Box sx={{
-            height: '200px', width: '300px', border: '1px solid #ccc', borderRadius: '5px',
-          }}
+          <Box
+            sx={{
+              height: '200px', width: '300px', border: '1px solid #ccc', borderRadius: '5px',
+            }}
           >
             <Box sx={{
               height: '70px', width: '298px', bgcolor: '#ccc', borderTop: '5px',
@@ -139,13 +147,16 @@ function PaperBox({
                 }}
                 src={ownerPic}
               />
-              <Typography variant="h5" sx={{ ml: '12px', fontWeight: 'bolder' }}>
-                {owner}
-              </Typography>
+              <Link href="https://music.youtube.com/watch?v=KO6oYfLgEY4&list=RDAMVMsUg09e69MQc" underline="none">
+                <Typography variant="h5" sx={{ ml: '12px', fontWeight: 'bolder' }}>
+                  {owner}
+                </Typography>
+              </Link>
             </Box>
             <Grid alignContent={{ xs: 'center', sm: 'flex-start' }} container gap={1} sx={{ ml: '12px', py: 2 }}>
               {fakeJob.map((item) => (
                 <Grid
+                  key={item.id}
                   sx={{
                     height: '20px',
                     borderRadius: '5px',
@@ -197,7 +208,7 @@ function PaperBox({
             'aria-labelledby': 'paper-menu',
           }}
         >
-          <MenuItem onClick={() => { navigate('/paper'); }}>view content</MenuItem>
+          <MenuItem onClick={() => { navigate(`/report/${name}`); }}>view content</MenuItem>
           <MenuItem>edit content</MenuItem>
         </Menu>
       </Box>

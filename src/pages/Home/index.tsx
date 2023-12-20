@@ -2,91 +2,8 @@ import {
   Box, Paper, Grid, useMediaQuery,
 } from '@mui/material';
 
-import { useNavigate } from 'react-router-dom';
-import googleDrive from '../../pictures/google-drive.png';
-import man from '../../pictures/man.png';
-import manHat from '../../pictures/manhat.png';
-import illustrator from '../../pictures/illustrator-draw.png';
-import chatgpt from '../../pictures/chatgpt.png';
-import linux from '../../pictures/linux.png';
-import microsoft from '../../pictures/microsoft.png';
-import typescript from '../../pictures/typescript.png';
-import mailChimp from '../../pictures/mailchimp.png';
 import PaperBox from './PaperBox';
-
-export interface IData {
-  id: string,
-  name: string,
-  type: string,
-  status: string,
-  date: string,
-  owner: string,
-  icon: string,
-  ownerPic: string,
-}
-
-const fakeData: IData[] = [
-  {
-    id: '1',
-    name: 'Google Drive API',
-    type: 'API',
-    status: 'In Progress',
-    date: 'May 22, 2022',
-    owner: 'Will Tong',
-    icon: googleDrive,
-    ownerPic: man,
-  },
-  {
-    id: '2',
-    name: 'Illustrator Draw API',
-    type: 'API',
-    status: 'In Progress',
-    date: 'May 22, 2022',
-    owner: 'Marcus Tsai',
-    icon: illustrator,
-    ownerPic: man,
-  },
-  {
-    id: '3',
-    name: 'Atom',
-    type: 'Software',
-    status: 'In Progress',
-    date: 'May 22, 2023',
-    owner: 'Aaron Lin',
-    icon: mailChimp,
-    ownerPic: manHat,
-  },
-  {
-    id: '4',
-    name: 'Google Drive API',
-    type: 'API',
-    status: 'Upcoming',
-    date: 'Agu 22, 2022',
-    owner: 'Tim Ho',
-    icon: googleDrive,
-    ownerPic: manHat,
-  },
-  {
-    id: '5',
-    name: 'Illustrator Draw API',
-    type: 'API',
-    status: 'In Progress',
-    date: 'May 19, 2022',
-    owner: 'Shelly Chen',
-    icon: linux,
-    ownerPic: man,
-  },
-  {
-    id: '6',
-    name: 'Atom',
-    type: 'Software',
-    status: 'Upcoming',
-    date: 'May 22, 2022',
-    owner: 'Owen Chung',
-    icon: microsoft,
-    ownerPic: manHat,
-  },
-];
+import { paperData, IData } from '../../config/ReportData';
 
 interface IWidth {
   xs: boolean,
@@ -123,7 +40,7 @@ function HomePage() {
         width: '100%',
         padding: '1%',
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: '',
         overflowY: 'auto',
       }}
       elevation={0}
@@ -134,8 +51,9 @@ function HomePage() {
         container
         gap={getBoxGap({ xs, s, sm })}
       >
-        {fakeData.map((item) => (
+        {paperData.map((item) => (
           <Box
+            key={item.id}
             sx={{
               height: '200px',
               width: getBoxWidth({
@@ -158,7 +76,6 @@ function HomePage() {
               owner={item.owner}
               icon={item.icon}
               ownerPic={item.ownerPic}
-
             />
           </Box>
         ))}
